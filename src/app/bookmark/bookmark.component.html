@@ -1,0 +1,22 @@
+<div class="container mt-5" *ngIf="Bookmarked">
+        <h2>Bookmarked</h2>
+        <div class="card">
+            <table class="table">
+                <tr *ngFor="let result of Bookmarked"><td>
+    
+                <span  style="float: left" class="pr-2" *ngIf="result.poster_path"><img height="60" width="50" src="{{image_url+result.poster_path}}"></span>
+                <span style="float: left" class="pr-2" *ngIf="!result.poster_path"><img height="60" width="50" src="https://cdn-images-1.medium.com/max/104/1*I-RzA2sopZvV3P3pxnGxxQ@2x.png"></span>
+                <h6 style="float: left">{{result.title+' '}}</h6>
+                <h6  *ngIf="result.release_date">({{result.release_date | slice:0:4}})</h6>
+                </td><td>
+                        <img  style="float: left" height="60" width="70" src="https://www.pnglot.com/pngfile/detail/92-923556_free-icons-png-yellow-star-black-background.png">
+                
+                        <span><h5>{{result.vote_average}}</h5>Voted</span><span style="float: left" class="mr-2">{{result.vote_count}}</span>
+                <!-- </td><td><img height="50" src="https://img.icons8.com/ios/50/000000/bookmark-ribbon.png"></td>
+            <td><img height="50" src="https://img.icons8.com/ios/50/000000/remove-bookmark.png"></td> -->
+            </td></tr>
+            </table>
+                    
+        </div>
+    
+    </div>

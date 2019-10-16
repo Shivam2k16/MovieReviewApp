@@ -1,0 +1,24 @@
+<div class="container">
+        <div class="row">
+          <div class="col-11"><input type="text" class="form-control" placeholder="Enter Keyword..." [(ngModel)]='query'><i class="fas fa-search"></i></div>
+        </div>  
+</div>
+
+<div class="container mt-5" *ngIf="!search_results">
+
+        <button (click)="sort('release_date')" class="btn btn-primary mr-3">Sort By Year</button>
+        <button (click)="sort('title')" class="btn btn-primary">Sort Alphabetically</button>
+        <h2>Upcoming Movies</h2>
+        <div *ngFor="let result of upcoming| name :query" style="float: left;">
+            <div class="col-3 mt-5">
+                <div class="card" style="width: 240px;">
+                    <img height="200" width="240" src="{{image_url+result.poster_path}}">
+                    <div class="m-3">
+                        <span>{{result.title+' '}} ({{result.release_date | slice:0:4}})</span><br>
+                        <img height="10" width="10" src="https://www.pnglot.com/pngfile/detail/92-923556_free-icons-png-yellow-star-black-background.png">{{result.vote_average}}
+                        <br><span class="mr-2">{{result.vote_count}} Voted</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
