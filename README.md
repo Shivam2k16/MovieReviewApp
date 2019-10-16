@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
 
+
+## Functions
+
+Enter keyword and get all movies and reviews in list. Have Movie suggestions, upcoming movies list with search filter and sorting.
+
+API data are cached. Bookmark your favourite movies and see list of all bookmarked.
+With Login authentication. Backend made via Node.js and mongodb.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
