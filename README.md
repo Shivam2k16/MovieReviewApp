@@ -10,6 +10,9 @@ Enter keyword and get all movies and reviews in list. Have Movie suggestions, up
 API data are cached. Bookmark your favourite movies and see list of all bookmarked.
 With Login authentication. Backend made via Node.js and mongodb.
 
+To setup mongodb check [here](https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-windows/).
+To setup Node.js check [here](https://nodejs.org/en/docs/).
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
