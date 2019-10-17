@@ -23,8 +23,7 @@
             
                     <span><h5>{{result.vote_average}}</h5>Voted</span><span style="float: left" class="mr-2">{{result.vote_count}}</span>
             </td><td>
-                <img  *ngIf="result.id" (click)="postBookmark(result)" height="50" src="https://img.icons8.com/ios/50/000000/bookmark-ribbon.png">
-                <img *ngIf="bookmark(result)" height="50" src="https://img.icons8.com/officel/80/000000/bookmark-ribbon.png">
+                <img (click)="postBookmark(result)" height="50" src="https://img.icons8.com/ios/50/000000/bookmark-ribbon.png">
             </td>
         
         </tr>
