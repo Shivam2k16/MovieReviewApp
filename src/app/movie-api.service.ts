@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MovieApiService {
-  api_url='http://localhost:4000';
+  api_url='http://localhost:4000/info';
 api_key='?api_key=48fa421e80cecda4db604b584cccc6d8';
 url='https://api.themoviedb.org/3/movie/';
 search_url='https://api.themoviedb.org/3/search/movie'+this.api_key+'&query=';

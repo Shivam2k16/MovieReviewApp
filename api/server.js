@@ -14,7 +14,7 @@ const express = require('express'),
     require('./config/passport');
     var routesApi = require('./routes/index');
 
-    const infoRoute = require('./routes/info.route');
+    var infoRoute = require('./routes/info.route');
     mongoose.Promise = global.Promise;
     mongoose.connect('mongodb://0.0.0.0:27017/moviereview', { useNewUrlParser: true}).then(
       () => {console.log('Database is connected') },

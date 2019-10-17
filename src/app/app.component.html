@@ -12,6 +12,7 @@
   </a>
   <a *ngIf="auth.isLoggedIn()">
     
+<p style="float: left;" class=" mt-5"  routerLink="bookmark">Bookmarks</p>
 <p style="float: left;" class=" m-5"  routerLink="upcoming">Upcoming Movies</p>
 <button class="btn btn-success mt-5 mr-5 mb-3" (click)="auth.logout()" routerLink="logout">Logout</button>
   </a>

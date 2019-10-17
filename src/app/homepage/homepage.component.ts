@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieApiService } from '../movie-api.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -9,12 +10,14 @@ import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private movieApi: MovieApiService) { }
+  constructor(private movieApi: MovieApiService, private router:Router) { }
   search_results;
   query;
   suggestions=[];
+  Bookmarked;
   ngOnInit() {
 
+    this.getBookmarks();
     for(var i=550;i<590;i++){
       this.movieApi.getSuggestions(i).subscribe((res)=>{
         if(res['poster_path']){
@@ -48,6 +51,26 @@ export class HomepageComponent implements OnInit {
 
   postBookmark(object){
     this.movieApi.postBookmark(object);
+    this.getBookmarks();
   }
 
+  getBookmarks(){
+    this.movieApi.getBookmark().subscribe((res)=>{
+    this.Bookmarked=res;
+    });
+  }
+
+
+  bookmark(obj) {
+    var i;
+    if(this.Bookmarked)
+    for (i = 0; i < this.Bookmarked.length; i++) {
+        if (this.Bookmarked[i].id === obj.id) {
+          console.log('booked');
+            return true;
+        }
+    }
+
+    return false;
+}
 }

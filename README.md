@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
 
+Clone the Project. Open Project in terminal, go in api folder run following commands:
+`npm i`
+`npm start`
+Open new tab in terminal and run command:
+`mongod`
 
 ## Functions
 

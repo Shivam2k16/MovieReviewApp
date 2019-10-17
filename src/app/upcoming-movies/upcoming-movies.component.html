@@ -14,7 +14,10 @@
                 <div class="card" style="width: 240px;">
                     <img height="200" width="240" src="{{image_url+result.poster_path}}">
                     <div class="m-3">
-                        <span>{{result.title+' '}} ({{result.release_date | slice:0:4}})</span><br>
+                        <span>{{result.title+' '}} ({{result.release_date | slice:0:4}})</span>
+                        
+                    <img style="float: right;" (click)="postBookmark(result)" height="50" src="https://img.icons8.com/ios/50/000000/bookmark-ribbon.png">
+                        <br>
                         <img height="10" width="10" src="https://www.pnglot.com/pngfile/detail/92-923556_free-icons-png-yellow-star-black-background.png">{{result.vote_average}}
                         <br><span class="mr-2">{{result.vote_count}} Voted</span>
                     </div>

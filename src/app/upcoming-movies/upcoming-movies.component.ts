@@ -11,8 +11,9 @@ export class UpcomingMoviesComponent implements OnInit {
   constructor(private movieApi:MovieApiService) { }
 
   upcoming=[];
-
+  Bookmarked;
   image_url='http://image.tmdb.org/t/p/w500/';
+  
   ngOnInit() {
     this.getUpcoming();
   }
@@ -33,5 +34,16 @@ export class UpcomingMoviesComponent implements OnInit {
     this.upcoming.sort((a,b) => (a[arg] > b[arg]) ? 1 : ((b[arg] > a[arg]) ? -1 : 0));
    }
   
+
+  postBookmark(object){
+    this.movieApi.postBookmark(object);
+    this.getBookmarks();
+  }
+
+  getBookmarks(){
+    this.movieApi.getBookmark().subscribe((res)=>{
+    this.Bookmarked=res;
+    });
+  }
 
 }
