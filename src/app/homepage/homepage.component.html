@@ -1,12 +1,16 @@
 <div class="container">
                   <div class="row">
-                    <div class="col-11"><input type="text" class="form-control" placeholder="Enter Keyword..." [(ngModel)]='query'><i class="fas fa-search"></i></div>
-                    <div class="col-1"><img class="hovers" height="35" (click)="getMovieSearch(query)" src="https://img.icons8.com/metro/26/000000/search.png"></div>
+                    <div class="col-11"><input type="text" class="form-control" placeholder="Enter Keyword..." [(ngModel)]='query'></div>
+                    <i (click)="getMovieSearch(query)" style="font-size: 40px;cursor: pointer;" class="material-icons col-1">
+                        search
+                        </i>
+                    <!-- <div class="col-1"><img class="hovers" height="35" (click)="getMovieSearch(query)" src="https://img.icons8.com/metro/26/000000/search.png"></div> -->
+                    <!-- <i class="material-icons">visibility</i> -->
                   </div>  
 </div>
-<div class="container mt-5" *ngIf="search_results">
-    <h2>Results for {{query}}</h2>
-    <div class="card">
+<div class="container mt-5" *ngIf="search_results&&query">
+    <h3>Results for {{query}}</h3><hr><br>
+    <div class="card p-5" style="box-shadow: 0px 0px 5px gray;">
         <!-- {{result.title}}</td><td></td><td>{{result.vote_average}}</td><td>{{result.vote_count}} -->
 
         <table class="table">
@@ -23,7 +27,13 @@
             
                     <span><h5>{{result.vote_average}}</h5>Voted</span><span style="float: left" class="mr-2">{{result.vote_count}}</span>
             </td><td>
-                <img (click)="postBookmark(result)" height="50" src="https://img.icons8.com/ios/50/000000/bookmark-ribbon.png">
+                <!-- <img (click)="postBookmark(result)" height="50" src="https://img.icons8.com/ios/50/000000/bookmark-ribbon.png"> -->
+                <i *ngIf="!bookmarkedTrue(result)" (click)="postBookmark(result)" class="material-icons" style="font-size: 50px;cursor: pointer;">
+                    turned_in_not
+                    </i>
+                    <i *ngIf="bookmarkedTrue(result)" (click)="postBookmark(result)" class="material-icons" style="font-size: 50px;cursor: pointer;">
+                        turned_in
+                        </i>
             </td>
         
         </tr>
@@ -34,19 +44,28 @@
 </div>
 
 
-<div class="container mt-5" *ngIf="!search_results">
-    <h2>Suggestions</h2>
+
+<div class="container mt-5" *ngIf="!query||!search_results">
+    <h3>Suggestions</h3><hr><br>
+    
+    <div class="card" style="box-shadow:0px 0px 5px grey; display: table-row;">
     <div *ngFor="let result of suggestions" style="float: left;">
-        <div class="col-3 mt-5">
-            <div class="card" style="width: 240px;">
-                <img height="200" width="240" src="{{image_url+result.poster_path}}">
+        <div class="col-3 mt-5" *ngIf="result.poster_path">
+            <div class="card w-140">
+                <img height="120" width="124" src="{{image_url+result.poster_path}}">
                 <div class="m-3">
-                    <span>{{result.title+' '}} ({{result.release_date | slice:0:4}})</span>
-                    <img style="float: right;" (click)="postBookmark(result)" height="50" src="https://img.icons8.com/ios/50/000000/bookmark-ribbon.png"><br>
+                    <span>{{result.title+' '}} ({{result.release_date | slice:0:4}})</span><br>
+                    <i *ngIf="!bookmarkedTrue(result)" (click)="postBookmark(result)" class="material-icons" style="font-size: 40px;cursor: pointer; float: left;">
+                        turned_in_not
+                        </i>
+                        <i *ngIf="bookmarkedTrue(result)" (click)="postBookmark(result)" class="material-icons" style="font-size: 40px;cursor: pointer; float: left;">
+                            turned_in
+                            </i>
                     <img height="10" width="10" src="https://www.pnglot.com/pngfile/detail/92-923556_free-icons-png-yellow-star-black-background.png">{{result.vote_average}}
-                    <br><span class="mr-2">{{result.vote_count}} Voted</span>
+                    <br><br><span class="mr-2" style="clear: both;">{{result.vote_count}} Voted</span>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

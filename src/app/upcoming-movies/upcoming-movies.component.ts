@@ -8,13 +8,15 @@ import { MovieApiService } from '../movie-api.service';
 })
 export class UpcomingMoviesComponent implements OnInit {
 
-  constructor(private movieApi:MovieApiService) { }
 
   upcoming=[];
   Bookmarked;
   image_url='http://image.tmdb.org/t/p/w500/';
+  constructor(private movieApi:MovieApiService) { }
+
   
   ngOnInit() {
+    this.getBookmarks();
     this.getUpcoming();
   }
   getUpcoming(){
@@ -45,5 +47,16 @@ export class UpcomingMoviesComponent implements OnInit {
     this.Bookmarked=res;
     });
   }
+
+  bookmarkedTrue(result){
+    return false;
+    // if(this.upcoming.some(e => e.id === result.id )){
+    // return true;
+    // }
+    // else{
+    //   return false;
+    // }
+  }
+  
 
 }

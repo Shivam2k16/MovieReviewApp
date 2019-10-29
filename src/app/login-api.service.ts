@@ -48,7 +48,15 @@ export class LoginApiService {
       let payload;
       if (token) {
         payload = token.split('.')[1];
+        console.log('1 payload',payload);
+
+       // The atob() method decodes a base-64 encoded string.
+
+       // This method decodes a string of data which has been encoded by the btoa() method.
+
         payload = window.atob(payload);
+        console.log('2 payload',Date.now()/1000);
+
         return JSON.parse(payload);
       } else {
         return null;
@@ -75,11 +83,14 @@ export class LoginApiService {
         base = this.http.get(`${this.uri}/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
       }
   
-  console.log(base.pipe);
+  console.log('base pipe', base.pipe);
       const request = base.pipe(
         map((data: TokenResponse) => {
+
+      console.log('base ', data);
+          
           if (data.token) {
-  console.log("data"+data.token+"kkk");
+
             this.saveToken(data.token);
           }
           
@@ -91,8 +102,7 @@ export class LoginApiService {
     }
   
     public register(user: TokenPayload): Observable<any> {
-    console.log(user);
-    console.log('in service');
+  
       return this.request('post', 'register', user);
     }
   

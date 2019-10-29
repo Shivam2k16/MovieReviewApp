@@ -12,10 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private fb: FormBuilder,private auth: LoginApiService, private router: Router, private tost:ToastrService) { }
-
-  ngOnInit() {
-  }
   angForm: FormGroup;
 
   credentials: TokenPayload = {
@@ -24,6 +20,12 @@ export class RegisterComponent implements OnInit {
     password: ''
   };
   error;
+  
+  constructor(private fb: FormBuilder,private auth: LoginApiService, private router: Router, private tost:ToastrService) { }
+
+  ngOnInit() {
+  }
+
   register() {
     this.error='';
     console.log(this.credentials,"fass");

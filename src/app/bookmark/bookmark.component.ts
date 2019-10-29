@@ -8,6 +8,7 @@ import { MovieApiService } from '../movie-api.service';
 })
 export class BookmarkComponent implements OnInit {
 
+  image_url='http://image.tmdb.org/t/p/w500/';
   Bookmarked;
   constructor( private movieApi:MovieApiService) { }
 
@@ -15,7 +16,6 @@ export class BookmarkComponent implements OnInit {
     this.getBookmarks();
   }
 
-  image_url='http://image.tmdb.org/t/p/w500/';
   getBookmarks(){
     this.movieApi.getBookmark().subscribe((res)=>{
     console.log(res);

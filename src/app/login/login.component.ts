@@ -15,8 +15,9 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   };
-  constructor(private auth:LoginApiService, private router:Router, private tost:ToastrService) { }
   error;
+  constructor(private auth:LoginApiService, private router:Router, private tost:ToastrService) { }
+  
   ngOnInit() {
   }
   login() {

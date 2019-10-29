@@ -11,7 +11,6 @@ const express = require('express'),
 
     passport = require('passport');
     require('./models/db');
-    require('./config/passport');
     var routesApi = require('./routes/index');
 
     var infoRoute = require('./routes/info.route');

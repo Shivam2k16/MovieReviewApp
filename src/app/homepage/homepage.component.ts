@@ -10,15 +10,17 @@ import { Router } from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private movieApi: MovieApiService, private router:Router) { }
   search_results;
   query;
   suggestions=[];
   Bookmarked;
-  ngOnInit() {
 
+  image_url='http://image.tmdb.org/t/p/w500/';
+  constructor(private movieApi: MovieApiService, private router:Router) { }
+
+  ngOnInit() {
     this.getBookmarks();
-    for(var i=550;i<590;i++){
+    for(var i=550;i<565;i++){
       this.movieApi.getSuggestions(i).subscribe((res)=>{
         if(res['poster_path']){
         this.suggestions.push(res);
@@ -27,7 +29,6 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  image_url='http://image.tmdb.org/t/p/w500/';
 
   getMovieReview(){
     this.movieApi.getMovieReview().subscribe((res)=>{
@@ -37,6 +38,7 @@ export class HomepageComponent implements OnInit {
   }
   
   getMovieSearch(query){
+    console.log(this.suggestions,'suggetstttttt');
     if(localStorage.getItem(query)){
       this.search_results=JSON.parse(localStorage.getItem(query));
     }
@@ -60,17 +62,32 @@ export class HomepageComponent implements OnInit {
     });
   }
 
+  
 
-  bookmark(obj) {
-    var i;
-    if(this.Bookmarked)
-    for (i = 0; i < this.Bookmarked.length; i++) {
-        if (this.Bookmarked[i].id === obj.id) {
-          console.log('booked');
-            return true;
-        }
-    }
-
+  bookmarkedTrue(result){
     return false;
+  //   if(this.search_results){
+  //     for(var i = 0; i < this.search_results.length; i++) {
+  //       if (this.search_results[i].id == result.id) {
+  //           return true;
+  //       }
+  //   }
+  // }
 }
+    //   if(this.search_results.filter(e => e.id === result.id ).length > 0){
+    //     return true;
+    //     }
+    //     else{
+    //       return false;
+    //     }
+    // }
+    // if(this.suggestions.some(e => e.id === result.id )){
+    //   return true;
+    //   }
+    //   else{
+    //     return false;
+    //   }
+  
+
+  
 }
